@@ -3,19 +3,19 @@
 using namespace std;
 
 int idx = 0;
-long long arr[1000001];
-queue<long long> q;
+unsigned long long arr[1000001];
+queue<unsigned long long> q;
 int n;
 
 void bfs()
 {
 	while (!q.empty())
 	{
-		long long* cur = q.front();
+		unsigned long long* cur = &q.front();
 		q.pop();
 		if (idx == ::n + 1)
 			break;
-		if (cur > 9876543210)
+		if (*cur > 9876543210)
 			break;
 		for (int i = 0; i <= 9; i++)
 		{
@@ -38,7 +38,10 @@ int main()
 		q.push(i);
 	}
 	bfs();
-	cout << ::arr[n];
+	if (::arr[n] == 0 && n > 0)
+		cout << -1;
+	else
+		cout << ::arr[n];
 
 	return 0;
 }
